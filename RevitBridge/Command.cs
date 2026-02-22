@@ -2487,10 +2487,10 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?footingName ?foundationName ?columnName ?copingName WHERE {
-    ex:PierFooting_Instance ex:name ?footingName .
-    ex:PierFoundation_Instance ex:name ?foundationName .
-    ex:PierColumn_Instance ex:name ?columnName .
-    ex:PierCoping_Instance ex:name ?copingName .
+    ex:A1_PierFooting_Instance ex:name ?footingName .
+    ex:A1_PierFoundation_Instance ex:name ?foundationName .
+    ex:A1_PierColumn_Instance ex:name ?columnName .
+    ex:A1_PierCoping_Instance ex:name ?copingName .
 }";
 
             // Execute SPARQL query and process results (A2)
@@ -3242,7 +3242,7 @@ SELECT ?footingName ?foundationName ?columnName ?copingName WHERE {
             Document doc = uidoc.Document;
 
             // Load ontology file and execute SPARQL query
-            string ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge\RevitBridge\bin\Debug\WBS_Bridge.ttl";
+            string ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge.ttl";
             Graph g = new Graph();
             try
             {
@@ -3288,10 +3288,10 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?footingName ?foundationName ?columnName ?copingName WHERE {
-    ex:PierFooting_Instance ex:name ?footingName .
-    ex:PierFoundation_Instance ex:name ?foundationName .
-    ex:PierColumn_Instance ex:name ?columnName .
-    ex:PierCoping_Instance ex:name ?copingName .
+    ex:A1_PierFooting_Instance ex:name ?footingName .
+    ex:A1_PierFoundation_Instance ex:name ?foundationName .
+    ex:A1_PierColumn_Instance ex:name ?columnName .
+    ex:A1_PierCoping_Instance ex:name ?copingName .
 }";
 
             // Execute SPARQL query and process results (A1)
@@ -4044,7 +4044,7 @@ SELECT ?footingName ?foundationName ?columnName ?copingName WHERE {
             Document doc = uidoc.Document;
 
             // Load ontology file and execute SPARQL query
-            string ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge2.ttl";
+            string ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge.ttl";
             Graph g = new Graph();
             try
             {
@@ -4134,151 +4134,6 @@ SELECT ?copingName ?columnName ?foundationName ?footingName WHERE {
                 _isProcessing = true;
                 _lastActionTime = DateTime.Now;
             }
-
-            //            // Start transaction
-            //            using (Transaction trans = new Transaction(doc, "Combine Bridge Elements"))
-            //            {
-            //                trans.Start();
-
-            //                // Load ontology file and execute SPARQL query
-            //                Graph g = new Graph();
-            //                FileLoader.Load(g, "WBS_Bridge2.ttl");
-
-            //                // SPARQL query creation and execution
-            //                string query = @"
-            //PREFIX ex: <http://example.org/>
-            //PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-            //PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-            //SELECT ?slabName ?protectivewallLeftName ?protectivewallRightName WHERE {
-            //ex:Slab_Instance ex:name ?slabName .
-            //ex:Protectivewall_Left_Instance ex:name ?protectivewallLeftName .
-            //ex:Protectivewall_Right_Instance ex:name ?protectivewallRightName .
-            //}";
-
-            //                // A1 Pier query
-            //                string queryPier = @"
-            //PREFIX ex: <http://example.org/>
-            //PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            //PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-            //SELECT ?copingName ?columnName ?foundationName ?footingName WHERE {
-            //ex:A1_PierCoping_Instance ex:isAttachedTo ex:A1_PierColumn_Instance .
-            //ex:A1_PierColumn_Instance ex:isAttachedTo ex:A1_PierFoundation_Instance .
-            //ex:A1_PierFoundation_Instance ex:isAttachedTo ex:A1_PierFooting_Instance .
-            //ex:A1_PierCoping_Instance ex:name ?copingName .
-            //ex:A1_PierColumn_Instance ex:name ?columnName .
-            //ex:A1_PierFoundation_Instance ex:name ?foundationName .
-            //ex:A1_PierFooting_Instance ex:name ?footingName .
-            //}";
-
-            //                // A2 Pier query
-            //                string queryA2 = @"
-            //PREFIX ex: <http://example.org/>
-            //PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            //PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-            //SELECT ?copingName ?columnName ?foundationName ?footingName WHERE {
-            //ex:A2_PierCoping_Instance ex:isAttachedTo ex:A2_PierColumn_Instance .
-            //ex:A2_PierColumn_Instance ex:isAttachedTo ex:A2_PierFoundation_Instance .
-            //ex:A2_PierFoundation_Instance ex:isAttachedTo ex:A2_PierFooting_Instance .
-            //ex:A2_PierCoping_Instance ex:name ?copingName .
-            //ex:A2_PierColumn_Instance ex:name ?columnName .
-            //ex:A2_PierFoundation_Instance ex:name ?foundationName .
-            //ex:A2_PierFooting_Instance ex:name ?footingName .
-            //}";
-
-            //                SparqlResultSet resultsPier = (SparqlResultSet)g.ExecuteQuery(queryPier);
-            //                if (resultsPier == null || resultsPier.Count == 0)
-            //                {
-            //                    message = "SPARQL query failed (Pier)";
-            //                    return Result.Failed;
-            //                }
-
-            //                // Execute SPARQL query and process results (A2)
-            //                SparqlResultSet resultsA2 = (SparqlResultSet)g.ExecuteQuery(queryA2);
-            //                if (resultsA2 == null || resultsA2.Count == 0)
-            //                {
-            //                    message = "SPARQL query failed (A2)";
-            //                    return Result.Failed;
-            //                }
-
-            //                // Process Pier results
-            //                string footingNameA1 = null, foundationNameA1 = null, columnNameA1 = null, copingNameA1 = null;
-            //                foreach (SparqlResult result in resultsPier)
-            //                {
-            //                    footingNameA1 = result["footingName"].ToString().Split('^')[0];
-            //                    foundationNameA1 = result["foundationName"].ToString().Split('^')[0];
-            //                    columnNameA1 = result["columnName"].ToString().Split('^')[0];
-            //                    copingNameA1 = result["copingName"].ToString().Split('^')[0];
-            //                }
-
-            //                // Process A2 results (stored for future use)
-            //                string footingNameA2 = null, foundationNameA2 = null, columnNameA2 = null, copingNameA2 = null;
-            //                foreach (SparqlResult result in resultsA2)
-            //                {
-            //                    footingNameA2 = result["footingName"].ToString().Split('^')[0];
-            //                    foundationNameA2 = result["foundationName"].ToString().Split('^')[0];
-            //                    columnNameA2 = result["columnName"].ToString().Split('^')[0];
-            //                    copingNameA2 = result["copingName"].ToString().Split('^')[0];
-            //                }
-
-            //                // Find superstructure elements
-            //                Element slab = FindElementByName(doc, "Slab");
-            //                Element protectiveWallLeft = FindElementByName(doc, "Protective_Wall_Left");
-            //                Element protectiveWallRight = FindElementByName(doc, "Protective_Wall_Right");
-
-            //                // Perform combination and placement tasks (Pier)
-            //                CombineElements(doc, footingNameA1, foundationNameA1, columnNameA1, copingNameA1);
-
-            //                // Slab and column combination
-            //                if (slab != null && columnNameA1 != null)
-            //                {
-            //                    Element column = FindElementByName(doc, columnNameA1);
-            //                    CombineSlabWithColumn(doc, slab, column);
-            //                }
-
-            //                // Move protective walls to slab position
-            //                if (slab != null && protectiveWallLeft != null && protectiveWallRight != null)
-            //                {
-            //                    MoveProtectiveWallsToSlab(doc, slab, protectiveWallLeft, protectiveWallRight);
-            //                }
-
-            //                // Move A2 wall relative to slab
-            //                if (slab != null && columnNameA2 != null)
-            //                {
-            //                    Element wallA2 = FindElementByName(doc, columnNameA2);
-            //                    MoveWallToSlab(doc, slab, wallA2);
-
-            //                    // Set wall height within same transaction
-            //                    SetElementHeightToZero(doc, wallA2);
-
-            //                    // Find each element of A2 abutment
-            //                    Element foundationA2 = FindElementByName(doc, foundationNameA2);
-            //                    Element footingA2 = FindElementByName(doc, footingNameA2);
-
-            //                    // Combine other elements relative to wallA2
-            //                    if (wallA2 != null)
-            //                    {
-            //                        // Wall and abutment combination
-            //                        if (foundationA2 != null)
-            //                        {
-            //                            CombineFoundationWithWall(doc, foundationA2, wallA2);
-            //                            SetElementHeightToZero(doc, foundationA2);
-            //                        }
-
-            //                        // Abutment and abutment footing combination
-            //                        if (foundationA2 != null && footingA2 != null)
-            //                        {
-            //                            CombineFootingWithFoundation(doc, foundationA2, footingA2);
-            //                            SetElementHeightToZero(doc, footingA2);
-            //                        }
-            //                    }
-            //                }
-
-            //                // Transaction completed
-            //                trans.Commit();
-            //            }
 
             return Result.Succeeded;
         }

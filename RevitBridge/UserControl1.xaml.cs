@@ -15,12 +15,12 @@ namespace RevitBridge
         private ExternalCommandData _commandData;
         private string _message;
         private ElementSet _elements;
-        private string _ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge2.ttl"; // Default TTL file path
+        private string _ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge.ttl"; // Default TTL file path
 
         public UserControl1()
         {
             InitializeComponent();
-            _ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge2.ttl"; // Set default TTL file path
+            _ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge.ttl"; // Set default TTL file path
             TtlFilePathTextBox.Text = _ttlFilePath; // Display default path in text box
 
         }
@@ -165,7 +165,7 @@ namespace RevitBridge
 
             if (string.IsNullOrWhiteSpace(ttlFilePath))
             {
-                ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge2.ttl"; // Default TTL file path
+                ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge.ttl"; // Default TTL file path
                 MessageBox.Show($"TTL file path not set. Using default path: {ttlFilePath}");
             }
             else

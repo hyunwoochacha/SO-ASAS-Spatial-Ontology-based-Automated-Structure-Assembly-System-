@@ -20,7 +20,7 @@ namespace RevitBridge
         private ExternalCommandData _commandData;
         private string _message;
         private ElementSet _elements;
-        private string _ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge2.ttl"; // Default TTL file path
+        private string _ttlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge.ttl"; // Default TTL file path
 
         public MainWindow(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

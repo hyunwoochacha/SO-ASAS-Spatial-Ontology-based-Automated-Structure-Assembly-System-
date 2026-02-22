@@ -100,17 +100,15 @@ SELECT ?slabName ?protectivewallLeftName ?protectivewallRightName WHERE {
 
 ## Raw Data
 
-Ontology source files for verification are available in the [`ontology/`](ontology/) folder:
+The ontology source file for verification is available in the [`ontology/`](ontology/) folder:
 
 | File | Description |
 |------|-------------|
-| [`WBS_Bridge.ttl`](ontology/WBS_Bridge.ttl) | Pier-Abutment configuration |
-| [`WBS_Bridge2.ttl`](ontology/WBS_Bridge2.ttl) | Multi-pier (A1–A5) + Abutment configuration |
-| [`WBS_Bridge_RevitBridge2.ttl`](ontology/WBS_Bridge_RevitBridge2.ttl) | Abutment-Pier configuration |
+| [`WBS_Bridge.ttl`](ontology/WBS_Bridge.ttl) | Unified bridge ontology (Piers A1–A5, Abutments A1–A2, Superstructure) |
 
 ## Requirements
 
-- Autodesk Revit 2024+
+- Autodesk Revit 2022+
 - .NET Framework 4.8
 - [dotNetRDF](https://www.dotnetrdf.org/) (VDS.RDF)
 

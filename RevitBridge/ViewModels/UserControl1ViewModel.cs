@@ -55,7 +55,7 @@ namespace RevitBridge.ViewModels
 
         public UserControl1ViewModel()
         {
-            TtlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge2.ttl"; // Default TTL file path
+            TtlFilePath = @"C:\Users\chw42\source\repos\RevitBridge2\RevitBridge2\bin\Debug\WBS_Bridge.ttl"; // Default TTL file path
 
 
 
