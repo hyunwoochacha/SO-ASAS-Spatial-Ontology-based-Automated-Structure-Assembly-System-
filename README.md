@@ -1,27 +1,27 @@
 # SO-ASAS: Spatial Ontology-based Automated Structure Assembly System
 
-A Revit plugin that automates bridge structure assembly using OWL/RDF spatial ontology and SPARQL queries.
+A spatial ontology-based automated assembly system for BIM library components. This system defines spatial relationships among bridge structural elements using OWL/RDF ontology and derives assembly sequences through SPARQL queries.
 
 ## Overview
 
-SO-ASAS defines the spatial relationships of bridge structural components (piers, abutments, slabs, protective walls) through an OWL ontology in Turtle (.ttl) format. The system extracts component relationships via SPARQL queries and automatically assembles elements in Autodesk Revit using the Revit API.
+SO-ASAS formalizes the spatial relationships of bridge structural components (piers, abutments, slabs, protective walls) as an OWL ontology in Turtle (.ttl) format. By querying the ontology with SPARQL, the system automatically determines the assembly order and spatial positioning of each component within a BIM environment.
 
 ### System Architecture
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                    Revit Environment                 │
-│  ┌───────────┐    ┌────────────┐    ┌────────────┐  │
-│  │  Revit    │◄───│  Assembly  │◄───│  SPARQL    │  │
-│  │  Elements │    │  Engine    │    │  Processor │  │
-│  └───────────┘    └────────────┘    └─────┬──────┘  │
-│                                           │         │
-│                                    ┌──────┴──────┐  │
-│                                    │  OWL/RDF    │  │
-│                                    │  Ontology   │  │
-│                                    │  (.ttl)     │  │
-│                                    └─────────────┘  │
-└─────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────┐
+│                                                      │
+│  ┌──────────────┐   ┌─────────────┐   ┌───────────┐ │
+│  │  BIM Library │◄──│  Assembly   │◄──│  SPARQL   │ │
+│  │  Components  │   │  Engine     │   │  Processor│ │
+│  └──────────────┘   └─────────────┘   └─────┬─────┘ │
+│                                              │       │
+│                                       ┌──────┴─────┐ │
+│                                       │  OWL/RDF   │ │
+│                                       │  Spatial   │ │
+│                                       │  Ontology  │ │
+│                                       └────────────┘ │
+└──────────────────────────────────────────────────────┘
 ```
 
 ## Ontology Design
@@ -62,15 +62,15 @@ ex:WBS_Component
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `ex:name` | xsd:string | Element name for Revit matching |
+| `ex:name` | xsd:string | Component identifier |
 | `ex:material` | xsd:string | Material type |
 | `ex:staLocation` | xsd:string | Station location |
 
 ## SPARQL Query Examples
 
-### Pier Element Query
+### Substructure Assembly Query
 
-Iterates from A1 to A7, extracting element names through spatial relationships:
+Extracts component names by traversing `isAttachedTo` relationships from top to bottom:
 
 ```sparql
 PREFIX ex: <http://example.org/>
@@ -86,7 +86,7 @@ SELECT ?copingName ?columnName ?foundationName ?footingName WHERE {
 }
 ```
 
-### Superstructure Query
+### Superstructure Assembly Query
 
 ```sparql
 PREFIX ex: <http://example.org/>
